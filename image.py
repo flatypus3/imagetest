@@ -11,8 +11,8 @@ def edit_image(image):
     font = ImageFont.truetype("impact.ttf", 200)
     draw = ImageDraw.Draw(image1)
     # draw text in the center of image
-    draw.text((image.size[0]//2,image.size[1]//2), "LMAO", font=font, fill=(255, 255, 255))
-    return image
+    draw.text((image1.size[0]//4,image1.size[1]//4), "LMAO", font=font, fill=(255, 255, 255))
+    return image1
 
 app = Flask(__name__)
 
@@ -24,13 +24,13 @@ def index(link):
             link = "http://" + link
         response = requests.get(link)
         img = Image.open(BytesIO(response.content))
-        edit_image(img).save("img.png")
-        return send_file("img.png")
+        edit_image(img).save("tmp.png")
+        return send_file("tmp.png")
     except Exception as e:
         try:
             urllib.urlretrieve(link, "img.png")
-            edit_image(Image.open("img.png")).save("img.png")
-            return send_file("img.png")
+            edit_image(Image.open("img.png")).save("tmp.png")
+            return send_file("tmp.png")
         except: 
             return f"{e}"
 

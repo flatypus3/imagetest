@@ -7,11 +7,11 @@ import urllib
 def edit_image(image):
     # resize the image so the height is 512 and the width maintains the aspect ratio
     sx,sy = image.size
-    image=image.resize((int(sx*(512 / sy)), 512))
+    image1=image.resize((int(sx*(512 / sy)), 512))
     font = ImageFont.truetype("impact.ttf", 200)
-    draw = ImageDraw.Draw(image)
+    draw = ImageDraw.Draw(image1)
     # draw text in the center of image
-    draw.text(image.size, "LMAO", font=font, fill=(255, 255, 255))
+    draw.text((image.size[0]//2,image.size[1]//2), "LMAO", font=font, fill=(255, 255, 255))
     return image
 
 app = Flask(__name__)

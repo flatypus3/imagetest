@@ -6,8 +6,8 @@ import urllib
 
 def edit_image(image):
     # resize the image so the height is 512 and the width maintains the aspect ratio
-    sy = image.size[1]
-    image=image.resize((int(image.size[0] * (512 / sy)), 512))
+    sx,sy = image.size
+    image=image.resize((int(sx*(512 / sy)), 512))
     font = ImageFont.truetype("impact.ttf", 200)
     draw = ImageDraw.Draw(image)
     # draw text in the center of image

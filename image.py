@@ -6,7 +6,7 @@ import urllib
 
 def edit_image(image):
     image.thumbnail((720, 720), Image.ANTIALIAS)
-    font = ImageFont.truetype("impact.ttf", 30)
+    font = ImageFont.truetype("impact.ttf", 200)
     draw = ImageDraw.Draw(image)
     draw.text((10, 10), "LMAO", font=font, fill=(255, 255, 255))
     return image

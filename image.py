@@ -5,10 +5,13 @@ from io import BytesIO
 import urllib
 
 def edit_image(image):
-    image.thumbnail((720, 720), Image.ANTIALIAS)
+    # resize the image so the height is 512 and the width maintains the aspect ratio
+    sy = image.size[1]
+    image.resize((int(image.size[0] * (512 / sy)), 512))
     font = ImageFont.truetype("impact.ttf", 200)
     draw = ImageDraw.Draw(image)
-    draw.text((10, 10), "LMAO", font=font, fill=(255, 255, 255))
+    # draw text in the center of image
+    draw.text(image.size, "LMAO", font=font, fill=(255, 255, 255))
     return image
 
 app = Flask(__name__)
